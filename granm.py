@@ -36,7 +36,7 @@ class GranM(Simplex):
                 self.add_artificiales(fila_actual, r_column)
 
         self.setup_fila_objetivo()
-
+    #agrega las las variables artificiales.
     def add_artificiales(self, i, j):
 
         self.resultados[0] += -self.M * self.resultados[i + 1]

@@ -51,7 +51,7 @@ class Simplex:
             else:
                 row.append(0)
 
-
+   #funcion que se encarga de  optener la columna pivote.
     def get_columna_pivote(self):
         min_index = 0
         min_item = math.inf
@@ -63,7 +63,7 @@ class Simplex:
                 min_index = index
 
         return min_index
-
+    #funcion que optiene las columnas pivotes.
     def get_fila_pivote(self, c):
         min_index = 0
         min_item = math.inf
@@ -86,14 +86,13 @@ class Simplex:
 
         self.pivotes.append((fila_pivote + 1, columna_pivote))
 
-        # reduce pivot row, pivot value equals to 1
+        #reduce el valor del pivote a 1
         for k, value in enumerate(self.restricciones[fila_pivote]):
             self.restricciones[fila_pivote][k] = value / valor
-
-        # apply same operation to result array
+        #aplica la misma operacion al resultado.
         self.resultados[fila_pivote + 1] /= valor
 
-        # reduce the rest of the rows to zero
+        # reduce las filas a 0
         for i, row in enumerate(self.restricciones):
 
             if i != fila_pivote:
@@ -102,12 +101,12 @@ class Simplex:
                 for j, value in enumerate(self.restricciones[i]):
                     self.restricciones[i][j] = value - (aux_value * self.restricciones[fila_pivote][j])
 
-                # apply same operation to result array
+                #aplica la misma operacion al resultado
                 self.resultados[i + 1] -= (aux_value * self.resultados[fila_pivote + 1])
 
         aux_value = self.fila_objetivo[columna_pivote]
 
-        # reduce the u row to zero
+        # reduce la solucion de U a 0
         for i, value in enumerate(self.fila_objetivo):
             self.fila_objetivo[i] = value - (aux_value * self.restricciones[fila_pivote][i])
 
@@ -132,7 +131,7 @@ class Simplex:
 
         self.imprimir_tabla("F I N A L")
         self.imprimir_solucion()
-
+#imprime las tabla del problema
     def imprimir_tabla(self,recursion):
 
         x = Archivo.crearNombre(self.archivo)
@@ -158,7 +157,7 @@ class Simplex:
             print('-' * (12 * (len(self.fila_objetivo) + 1)), file=archivo)
             print("\nLISTA PIVOTES:  " + str(self.pivotes)+"\n", file=archivo)
             print('-' * (12 * (len(self.fila_objetivo) + 1))+"\n", file=archivo)
-
+    # Imprime la soluciones del problema
     def imprimir_solucion(self):
 
         print('-' * (12 * (len(self.fila_objetivo) + 1)))

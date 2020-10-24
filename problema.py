@@ -1,3 +1,4 @@
+# esta clase se utiliza para optener las diferentes partes del problema para resolverse.
 class Problema:
 
     metodo = -1

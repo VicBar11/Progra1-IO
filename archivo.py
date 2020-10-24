@@ -1,7 +1,7 @@
 from problema import Problema
 
 class Archivo:
-
+#lee el archivo de entrada
     @staticmethod
     def leer_archivo(file_name):
 
@@ -40,7 +40,7 @@ class Archivo:
 
         except:
             print("El archivo no existe o hay un error dentro del mismo.")
-
+#lee las lineas del archivo una por una
     @staticmethod
     def leer_linea(linea, restricciones, matriz, cantidad):
 
@@ -57,14 +57,14 @@ class Archivo:
                     fila.append(float(linea[i]))
 
         matriz.append(fila)
-
+#crea el nombre del archivo solucion
     @staticmethod
     def crearNombre(nombre_archivo):
         nombre_sin_extension = (nombre_archivo.split('.')[:-1])[0]
         extension = (nombre_archivo.split('.')[-1:])[0]
         archivo_solucion = nombre_sin_extension + '_solucion.' + extension
         return archivo_solucion
-
+#crea el Archivo nuevo.
     @staticmethod
     def crearArchivo(nombre_archivo, contenido):
         try:

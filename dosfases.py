@@ -51,7 +51,7 @@ class DosFases(Simplex):
                 indices.append(len(self.fila_objetivo) - 1)
 
         return indices
-
+    #Busca la fila con el indice igual a 1
     def buscar_fila(self, indice):
 
         for i, fila in enumerate(self.restricciones):
